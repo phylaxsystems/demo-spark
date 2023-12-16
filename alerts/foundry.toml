@@ -1,0 +1,16 @@
+[profile.default]
+optimizer = true
+optimizer_runs = 20_000
+
+[profile.user-health]
+out = "./out/user-health"
+cache = "./cache/user-health"
+test = "./user-health"
+
+[profile.assets-liability]
+out = "./out/assets-liability"
+cache = "./cache/assets-liability"
+test = "./assets-liability"
+
+[rpc_endpoints]
+mainnet = "${ETH_RPC}"

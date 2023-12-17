@@ -28,7 +28,7 @@ contract AssetsLiability is Alert {
             assets = assetsAndLiabilities[i].assets;
             exportData(reserve, liabilities, assets);
             if (
-                liabilities > assets || assets - liabilities < 1000 * PRECISION
+                liabilities > assets || assets - liabilities > 1000 * PRECISION
             ) {
                 unhealthyReserves.push(reserve);
             }

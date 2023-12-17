@@ -8,8 +8,4 @@ contract UserHealth is Alert {
     function setUp() public {
         enableChan("mainnet");
     }
-
-    function test_userHealth() public chain("mainnet") {
-        string userHealth 
-    }
 }

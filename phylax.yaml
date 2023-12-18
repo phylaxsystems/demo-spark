@@ -10,6 +10,7 @@ alerts:
   - name: assets-liability
     on:
       - rule: 'origin == hash "mainnet"'
+        interval: 1
     interval: 5
     foundryProjectRootPath: ./alerts
     profile: assets-liability
@@ -21,7 +22,7 @@ actions:
   - name: slack-user-health
     on:
       - rule: 'name == "user-health" && alert_state == "on"'
-    interval: 1
+        interval: 1
     target: "${SLACK_WEBHOOK}"
     platform: slack
     title: "User Health Alert"
@@ -29,7 +30,7 @@ actions:
   - name: slack-assets-liability
     on:
       - rule: 'name == "assets-liability" && alert_state == "on"'
-    interval: 1
+        interval: 1
     target: "${SLACK_WEBHOOK}"
     platform: slack
     title: "User Liability Alert"

@@ -4,14 +4,13 @@ alerts:
   - name: user-health
     on:
       - rule: 'origin == hash "mainnet"'
-    interval: 1
+        interval: 1
     foundryProjectRootPath: ./alerts
     profile: user-health
   - name: assets-liability
     on:
       - rule: 'origin == hash "mainnet"'
-        interval: 1
-    interval: 5
+        interval: 5
     foundryProjectRootPath: ./alerts
     profile: assets-liability
 watchers:

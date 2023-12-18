@@ -1,5 +1,3 @@
-api:
-  bindIp: 127.0.0.1:4269
 alerts:
   - name: user-health
     on:

@@ -1,10 +1,10 @@
 alerts:
-  - name: user-health
-    on:
-      - rule: 'origin == hash "mainnet"'
-        interval: 1
-    foundryProjectRootPath: alerts
-    foundryProfile: user-health
+  # - name: user-health
+  #   on:
+  #     - rule: 'origin == hash "mainnet"'
+  #       interval: 1
+  #   foundryProjectRootPath: alerts
+  #   foundryProfile: user-health
   - name: assets-liability
     on:
       - rule: 'origin == hash "mainnet"'

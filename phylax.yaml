@@ -10,7 +10,7 @@ alerts:
       - rule: 'origin == hash "mainnet"'
         interval: 5
     foundryProjectRootPath: alerts
-    profile: assets-liability
+    foundryProfile: assets-liability
 watchers:
   - name: mainnet
     chain: mainnet

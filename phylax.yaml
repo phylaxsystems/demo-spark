@@ -3,32 +3,32 @@ alerts:
     on:
       - rule: 'origin == hash "mainnet"'
         interval: 1
-    foundryProjectRootPath: ./alerts
+    foundryProjectRootPath: alerts
     profile: user-health
   - name: assets-liability
     on:
       - rule: 'origin == hash "mainnet"'
         interval: 5
-    foundryProjectRootPath: ./alerts
+    foundryProjectRootPath: alerts
     profile: assets-liability
 watchers:
   - name: mainnet
     chain: mainnet
     ethRpc: "${ETH_RPC}"
-actions:
-  - name: slack-user-health
-    on:
-      - rule: 'name == "user-health" && alert_state == "on"'
-        interval: 1
-    target: "${SLACK_WEBHOOK}"
-    platform: slack
-    title: "User Health Alert"
-    description: "User health alert was triggered. See phylax logs to see why"
-  - name: slack-assets-liability
-    on:
-      - rule: 'name == "assets-liability" && alert_state == "on"'
-        interval: 1
-    target: "${SLACK_WEBHOOK}"
-    platform: slack
-    title: "User Liability Alert"
-    description: "User health liability was triggered. See phylax logs to see why"
+# actions:
+# - name: slack-user-health
+#   on:
+#     - rule: 'name == "user-health" && alert_state == "on"'
+#       interval: 1
+#   target: "${SLACK_WEBHOOK}"
+#   platform: slack
+#   title: "User Health Alert"
+#   description: "User health alert was triggered. See phylax logs to see why"
+# - name: slack-assets-liability
+#   on:
+#     - rule: 'name == "assets-liability" && alert_state == "on"'
+#       interval: 1
+#   target: "${SLACK_WEBHOOK}"
+#   platform: slack
+#   title: "User Liability Alert"
+#   description: "User health liability was triggered. See phylax logs to see why"

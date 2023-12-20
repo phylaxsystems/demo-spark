@@ -18,48 +18,32 @@ contract AssetsLiability is Alert {
         address reserve;
         uint256 liabilities;
         uint256 assets;
-        IHealthchecks.ReserveAssetLiability[]
-            memory assetsAndLiabilities = IHealthchecks($healthcheckAddress)
-                .getAllReservesAssetLiability();
+        IHealthchecks.ReserveAssetLiability[] memory assetsAndLiabilities =
+            IHealthchecks($healthcheckAddress).getAllReservesAssetLiability();
         uint256 len = assetsAndLiabilities.length;
         for (uint256 i; i < len; i++) {
             reserve = assetsAndLiabilities[i].reserve;
             liabilities = assetsAndLiabilities[i].liabilities;
             assets = assetsAndLiabilities[i].assets;
             exportData(reserve, liabilities, assets);
-            if (
-                liabilities > assets || assets - liabilities > 1000 * PRECISION
-            ) {
+            if (liabilities > assets || assets - liabilities > 1000 * PRECISION) {
                 unhealthyReserves.push(reserve);
             }
         }
         if (unhealthyReserves.length > 0) {
             string memory reserves = "";
-            for (uint i; i < unhealthyReserves.length; i++) {
-                reserves = string.concat(
-                    reserves,
-                    "'",
-                    vm.toString(unhealthyReserves[i]),
-                    "'"
-                );
+            for (uint256 i; i < unhealthyReserves.length; i++) {
+                reserves = string.concat(reserves, "'", vm.toString(unhealthyReserves[i]), "'");
                 if (i != unhealthyReserves.length - 1) {
                     reserves = string.concat(reserves, ", ");
                 }
             }
-            string memory err = string.concat(
-                "The reserves [",
-                reserves,
-                "] are not healthy"
-            );
+            string memory err = string.concat("The reserves [", reserves, "] are not healthy");
             revert(err);
         }
     }
 
-    function exportData(
-        address reserve,
-        uint256 liabilities,
-        uint256 assets
-    ) internal {
+    function exportData(address reserve, uint256 liabilities, uint256 assets) internal {
         string memory key = string.concat("health-", vm.toString(reserve));
         int256 diff = int256(assets) - int256(liabilities);
         ph.export(key, vm.toString(diff));
@@ -73,8 +57,5 @@ interface IHealthchecks {
         uint256 liabilities;
     }
 
-    function getAllReservesAssetLiability()
-        external
-        view
-        returns (ReserveAssetLiability[] memory);
+    function getAllReservesAssetLiability() external view returns (ReserveAssetLiability[] memory);
 }

@@ -1,5 +1,9 @@
 # Spark Demo
 
+## Env Variables
+
+- `ETH_RPC`: The url to the internal Reth node that runs alongside the hosted Phylax node
+
 ## Alerts
 
 ### User Health
@@ -14,4 +18,4 @@
 
 ## Actions
 
-A slack webhook to their internal slack
+A slack webhook to their internal slack for each alert

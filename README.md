@@ -1,5 +1,9 @@
 # Spark Demo
 
+- The demo is hosted by Phylax Systems
+- It can export logs and metrics to a Grafana Cloud or any loki/prometheus instance
+- This demo can be ran by any Phylax instance with an RPC endpoint to a mainnet Ethereum node
+
 ## Env Variables
 
 - `ETH_RPC`: The url to the internal Reth node that runs alongside the hosted Phylax node

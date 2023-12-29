@@ -10,19 +10,11 @@ watchers:
     chain: mainnet
     ethRpc: "${ETH_RPC}"
 actions:
-  - name: slack-user-health
-    on:
-      - rule: 'name == "user-health" && alert_state == "on"'
-        interval: 1
-    target: "${SLACK_WEBHOOK}"
-    platform: slack
-    title: "User Health Alert"
-    description: "User health alert was triggered. See phylax logs to see why"
   - name: slack-assets-liability
     on:
-      - rule: 'name == "assets-liability" && alert_state == "on"'
+      - rule: 'origin == hash "assets-liability" && type == "alert_firing"'
         interval: 1
     target: "${SLACK_WEBHOOK}"
     platform: slack
-    title: "Assets-Liability Alert"
-    description: "Some assets are not healthy. See phylax logs for more information"
+    title: "Phylax Assets Health Alert"
+    description: "${event.body.failed_tests.test_assetsLiability()}"

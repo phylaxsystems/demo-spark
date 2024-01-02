@@ -31,14 +31,14 @@ contract AssetsLiability is Alert {
             if (reserve == $DAI) {
                 if (
                     (liabilities > assets ||
-                        assets - liabilities > 1_000 * PRECISION)
+                        assets - liabilities > 300_000 * PRECISION)
                 ) {
                     unhealthyReserves.push(reserve);
                 }
             } else {
                 if (
                     (liabilities > assets ||
-                        assets - liabilities > 3_000 * PRECISION)
+                        assets - liabilities > 1_000 * PRECISION)
                 ) {
                     unhealthyReserves.push(reserve);
                 }
